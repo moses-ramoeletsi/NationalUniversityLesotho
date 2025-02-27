@@ -29,6 +29,7 @@ import {
 //   updateTrip,
   updateUser,
 } from "../controllers/admin.controllers.js";
+import { createMeeting, deleteMeeting, getMeetings, updateMeeting } from "../controllers/meeting.controllers.js";
 
 const router = express.Router();
 
@@ -38,11 +39,11 @@ router.get("/user", getUsers);
 router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
 
-//meeting routes
-// router.post("/meeting", createMeeting);
-// router.get("/meeting", getMeetings);
-// router.put("/meeting/:id", updateMeeting);
-// router.delete("/meeting/:id", deleteMeeting);
+// meeting routes
+router.post("/meeting", createMeeting);
+router.get("/meeting", getMeetings);
+router.put("/meeting/:id", updateMeeting);
+router.delete("/meeting/:id", deleteMeeting);
 
 // //trip routes
 // router.post("/educationalTrip", createTrip);
