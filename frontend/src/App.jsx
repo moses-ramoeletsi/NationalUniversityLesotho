@@ -6,6 +6,9 @@ import LoginForm from './pages/AdminLogin';
 import AdminPanel from './pages/AdminPanel';
 import Layout from './components/Logout';
 import Meetings from './pages/Meetings';
+import Seminars from './components/Seminars';
+import AddSeminars from './components/AddSeminars';
+import ActivitiesPage from './pages/ActivitiesPage';
 
 function App() {
   return (
@@ -13,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainContent />} />
+          <Route path="/seminars" element={<Seminars />} />
 
         <Route path="/admin/*" element={<LoginForm />} />
           <Route path="/admin-panel/*" element={<AdminPanel />} />
@@ -27,6 +31,14 @@ function App() {
             }
             />
             <Route
+            path="/activities"
+            element={
+              <Layout>
+                <ActivitiesPage />
+              </Layout>
+            }
+          />
+            <Route
             path="/meetings"
             element={
               <Layout>
@@ -34,6 +46,7 @@ function App() {
               </Layout>
             }
           />
+          <Route path="/add-seminar" element={<AddSeminars />} />
             </Routes>
       </BrowserRouter>
       
