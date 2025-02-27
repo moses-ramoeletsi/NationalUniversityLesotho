@@ -1,34 +1,5 @@
 import express, { Router } from "express";
-import {
-//   createCollaboration,
-//   createDebate,
-//   createHealthCare,
-//   createMeeting,
-//   createSeminar,
-//   createTrip,
-  createUser,
-//   deleteCollaboration,
-//   deleteDebate,
-//   deleteHealthCare,
-//   deleteMeeting,
-//   deleteSeminar,
-//   deleteTrip,
-  deleteUser,
-//   getCollaboration,
-//   getDebate,
-//   getHealthCare,
-//   getMeetings,
-//   getSeminars,
-//   getTrips,
-  getUsers,
-//   updateCollaboration,
-//   updateDebate,
-//   updateHealthCare,
-//   updateMeeting,
-//   updateSeminar,
-//   updateTrip,
-  updateUser,
-} from "../controllers/admin.controllers.js";
+import { createUser, deleteUser, getUsers, updateUser,} from "../controllers/admin.controllers.js";
 import { createMeeting, deleteMeeting, getMeetings, updateMeeting } from "../controllers/meeting.controllers.js";
 import { createSeminar, deleteSeminar, getSeminars, updateSeminar } from "../controllers/seminars.controllers.js";
 
