@@ -30,6 +30,7 @@ import {
   updateUser,
 } from "../controllers/admin.controllers.js";
 import { createMeeting, deleteMeeting, getMeetings, updateMeeting } from "../controllers/meeting.controllers.js";
+import { createSeminar, deleteSeminar, getSeminars, updateSeminar } from "../controllers/seminars.controllers.js";
 
 const router = express.Router();
 
@@ -52,10 +53,10 @@ router.delete("/meeting/:id", deleteMeeting);
 // router.delete("/educationalTrip/:id", deleteTrip);
 
 // //seminars routes
-// router.post("/seminars", createSeminar);
-// router.get("/seminars", getSeminars);
-// router.put("/seminars/:id", updateSeminar);
-// router.delete("/seminars/:id", deleteSeminar);
+router.post("/seminars", createSeminar);
+router.get("/seminars", getSeminars);
+router.put("/seminars/:id", updateSeminar);
+router.delete("/seminars/:id", deleteSeminar);
 
 // //health care routes
 // router.post("/health-care", createHealthCare);

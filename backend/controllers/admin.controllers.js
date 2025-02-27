@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import User from "../models/user.model.js";
 // import Meeting from "../models/meeting.model.js";
 // import Trip from "../models/trips.model.js";
-// import Seminar from "../models/seminars.js";
 // import HealthCare from "../models/mental-health.model.js";
 // import Debate from "../models/debate.model.js";
 // import Collaboration from "../models/CollaborationAndPartnership.model.js";
