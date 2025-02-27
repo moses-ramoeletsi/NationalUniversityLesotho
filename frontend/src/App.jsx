@@ -4,7 +4,8 @@ import MainContent from './pages/MainContent';
 import Members from './pages/Members';
 import LoginForm from './pages/AdminLogin';
 import AdminPanel from './pages/AdminPanel';
-import Layout from './components/Layout';
+import Layout from './components/Logout';
+import Meetings from './pages/Meetings';
 
 function App() {
   return (
@@ -25,6 +26,14 @@ function App() {
               </Layout>
             }
             />
+            <Route
+            path="/meetings"
+            element={
+              <Layout>
+                <Meetings />
+              </Layout>
+            }
+          />
             </Routes>
       </BrowserRouter>
       

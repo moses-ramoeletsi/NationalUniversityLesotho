@@ -1,19 +1,17 @@
 import React, { useEffect } from "react";
 import { MapPin, Clock, Podcast } from "lucide-react";
 import { adminFunctionStore } from "../store/user.store";
-// import { meetingStore } from "../store/meeting.store";
+import { meetingStore } from "../store/meeting.store";
 
 const About = () => {
   const { fetchUsers, users } = adminFunctionStore();
-//   const { fetchMeeting, meeting } = meetingStore();
+  const { fetchMeeting, meetingItem } = meetingStore();
   
   useEffect(() => {
     fetchUsers();
-    // fetchMeeting();
+    fetchMeeting();
   }, []);
 
-  console.log("All users", users);
-//   console.log("All meetings", meeting);
 
   return (
     <section id="about" className="py-12 sm:py-16 md:py-24 bg-white">
@@ -53,12 +51,12 @@ const About = () => {
               </div>
             )}
           </div>
-          {/* {meeting.length > 0 && (
+          {meetingItem.length > 0 && (
             <div className="bg-gradient-to-br from-green-50 to-white p-6 sm:p-8 rounded-xl shadow-lg">
               <h3 className="text-xl sm:text-2xl md:text-2xl font-bold mb-6 sm:mb-8 text-green-900">
                 Meeting Information
               </h3>
-              {meeting.map((meeting, index) => (
+              {meetingItem.map((meeting, index) => (
                 <div key={index} className="space-y-4 sm:space-y-6">
                   <div className="flex items-center p-3 sm:p-4 bg-white rounded-lg shadow-sm">
                     <Clock className="text-green-600 mr-3 sm:mr-4 flex-shrink-0" size={20} sm:size={24} />
@@ -90,7 +88,7 @@ const About = () => {
                 </div>
               ))}
             </div>
-          )} */}
+          )}
         </div>
       </div>
     </section>
