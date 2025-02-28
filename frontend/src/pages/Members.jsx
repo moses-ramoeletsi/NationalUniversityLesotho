@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import { Plus, X } from "lucide-react";
 import { adminFunctionStore } from "../store/user.store";
 import UserCard from "../components/UserCard";
+
 const Members = () => {
-  const { fetchUsers, users } = adminFunctionStore();
-  const { addMember } = adminFunctionStore();
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [newMember, setNewMember] = useState({
-    firstName: "",
-    lastName: "",
-    personnelType: "",
-    image: "",
-  });
+    const { fetchUsers, users } = adminFunctionStore();
+    const { addMember } = adminFunctionStore();
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [newMember, setNewMember] = useState({
+        firstName: "",
+        lastName: "",
+        personnelType: "",
+        image: "",
+    });
+    const personnelTypes = ["President",
+      "Vice-president",
+      "Chief Organizer",
+      "Secretary",
+      "Vice-secretary",]
+
 
   useEffect(() => {
     fetchUsers();
@@ -116,18 +123,33 @@ const Members = () => {
                   setNewMember({ ...newMember, lastName: e.target.value })
                 }
               />
-              <input
-                type="text"
-                placeholder="Personnel Type"
-                className="w-full px-2 py-1 sm:px-3 sm:py-2 text-sm border rounded-md"
-                value={newMember.personnelType}
-                onChange={(e) =>
-                  setNewMember({
-                    ...newMember,
-                    personnelType: e.target.value,
-                  })
-                }
-              />
+              <div className="space-y-2">
+                <p className="text-sm text-gray-700 font-medium">Personnel Type:</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {personnelTypes.map((type) => (
+                    <div key={type} className="flex items-center">
+                      <input
+                        type="radio"
+                        id={type}
+                        name="personnelType"
+                        value={type}
+                        checked={newMember.personnelType === type}
+                        onChange={() =>
+                          setNewMember({
+                            ...newMember,
+                            personnelType: type,
+                          })
+                        }
+                        className="mr-2"
+                      />
+                      <label htmlFor={type} className="text-sm">
+                        {type}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <input
                 type="text"
                 placeholder="Image URL"

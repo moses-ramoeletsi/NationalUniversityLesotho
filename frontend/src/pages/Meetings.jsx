@@ -10,10 +10,32 @@ const Meetings = () => {
 
   const [newMeeting, setMeeting] = useState({
     frequency: "",
-    day: "",
+    day: [],
     location: "",
     description: "",
   });
+
+  const meetingCadence = ["Weekly", "Monthly"];
+  const meetingLocation = [
+    "CMP 101",
+    "CMP 102",
+    "CMP 103",
+    "CMP 104",
+    "CMP 105",
+    "CMP 106",
+    "CMP 107",
+    "CMP 108",
+  ];
+  
+  const daysOfWeek = [
+    "Monday", 
+    "Tuesday", 
+    "Wednesday", 
+    "Thursday", 
+    "Friday", 
+    "Saturday", 
+    "Sunday"
+  ];
 
   useEffect(() => {
     fetchMeeting();
@@ -23,11 +45,25 @@ const Meetings = () => {
     setIsAddMeetingModalOpen(true);
   };
 
+  const handleDayChange = (day) => {
+    if (newMeeting.day.includes(day)) {
+      setMeeting({
+        ...newMeeting,
+        day: newMeeting.day.filter(d => d !== day)
+      });
+    } else {
+      setMeeting({
+        ...newMeeting,
+        day: [...newMeeting.day, day]
+      });
+    }
+  };
+
   const handleSaveNewMeeting = async () => {
     try {
       if (
         !newMeeting.frequency ||
-        !newMeeting.day ||
+        newMeeting.day.length === 0 ||
         !newMeeting.location ||
         !newMeeting.description
       ) {
@@ -35,13 +71,18 @@ const Meetings = () => {
         return;
       }
       
-      const { success, message } = await createNewMeeting(newMeeting);
+      const meetingToSave = {
+        ...newMeeting,
+        day: newMeeting.day.join(", ")
+      };
+      
+      const { success, message } = await createNewMeeting(meetingToSave);
 
       if (success) {
         console.log(message || "New meeting added");
         setMeeting({
           frequency: "",
-          day: "",
+          day: [],
           location: "",
           description: "",
         });
@@ -88,7 +129,7 @@ const Meetings = () => {
                 setIsAddMeetingModalOpen(false);
                 setMeeting({
                   frequency: "",
-                  day: "",
+                  day: [],
                   location: "",
                   description: "",
                 });
@@ -102,33 +143,71 @@ const Meetings = () => {
             </h2>
 
             <div className="space-y-4">
-              <input
-                type="text"
-                placeholder="Meeting Schedule (Weekly/Monthly)"
-                className="w-full px-3 py-2 border rounded-md"
-                value={newMeeting.frequency}
-                onChange={(e) =>
-                  setMeeting({ ...newMeeting, frequency: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Meeting Day"
-                className="w-full px-3 py-2 border rounded-md"
-                value={newMeeting.day}
-                onChange={(e) =>
-                  setMeeting({ ...newMeeting, day: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Location (e.g. CMP 101)"
-                className="w-full px-3 py-2 border rounded-md"
-                value={newMeeting.location}
-                onChange={(e) =>
-                  setMeeting({ ...newMeeting, location: e.target.value })
-                }
-              />
+              {/* Meeting Cadence Radio Buttons */}
+              <div className="space-y-2">
+                <p className="text-sm text-gray-700 font-medium">Meeting Cadence:</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {meetingCadence.map((type) => (
+                    <div key={type} className="flex items-center">
+                      <input
+                        type="radio"
+                        id={type}
+                        name="frequency"
+                        value={type}
+                        checked={newMeeting.frequency === type}
+                        onChange={() =>
+                            setMeeting({ ...newMeeting, frequency: type })
+                        }
+                        className="mr-2"
+                      />
+                      <label htmlFor={type} className="text-sm">
+                        {type}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Days Checkboxes */}
+              <div className="space-y-2">
+                <p className="text-sm text-gray-700 font-medium">Meeting Days:</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {daysOfWeek.map((day) => (
+                    <div key={day} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id={day}
+                        checked={newMeeting.day.includes(day)}
+                        onChange={() => handleDayChange(day)}
+                        className="mr-2"
+                      />
+                      <label htmlFor={day} className="text-sm">
+                        {day}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Location Dropdown */}
+              <div className="space-y-2">
+                <p className="text-sm text-gray-700 font-medium">Location:</p>
+                <select
+                  className="w-full px-3 py-2 border rounded-md bg-white"
+                  value={newMeeting.location}
+                  onChange={(e) =>
+                    setMeeting({ ...newMeeting, location: e.target.value })
+                  }
+                >
+                  <option value="">Select a location</option>
+                  {meetingLocation.map((location) => (
+                    <option key={location} value={location}>
+                      {location}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              
               <input
                 type="text"
                 placeholder="Description"
