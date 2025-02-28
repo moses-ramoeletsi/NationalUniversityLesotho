@@ -11,6 +11,8 @@ import AddSeminars from './components/AddSeminars';
 import ActivitiesPage from './pages/ActivitiesPage';
 import MentalHealthResourcePage from './pages/HealthCareResource';
 import AddHealthCare from './components/AddHealthcare';
+import EducationalTrip from './pages/EducationalTrips';
+import AddTrip from './components/AddTrip';
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path="/" element={<MainContent />} />
           <Route path="/seminars" element={<Seminars />} />
           <Route path="/health-care" element={<MentalHealthResourcePage />} />
+          <Route path="/educational-trip" element={<EducationalTrip />} />
 
         <Route path="/admin/*" element={<LoginForm />} />
           <Route path="/admin-panel/*" element={<AdminPanel />} />
@@ -51,6 +54,7 @@ function App() {
           />
           <Route path="/add-seminar" element={<AddSeminars />} />
           <Route path="/add-health-care" element={<AddHealthCare />} />
+          <Route path="/add-educational-trips" element={<AddTrip />} />
             </Routes>
       </BrowserRouter>
       

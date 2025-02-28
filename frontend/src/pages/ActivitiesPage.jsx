@@ -35,7 +35,7 @@ const ActivitiesPage = () => {
           </p>
         </Link>
         <Link
-          to="/add-trips"
+          to="/add-educational-trips"
           className="items-center justify-center text-center flex flex-col bg-green-100 p-4 md:p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1"
         >
           <h3 className="text-lg md:text-xl lg:text-xl font-semibold mb-2 text-green-900">
