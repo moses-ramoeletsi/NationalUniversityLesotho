@@ -6,7 +6,7 @@ import LoginForm from './pages/AdminLogin';
 import AdminPanel from './pages/AdminPanel';
 import Layout from './components/Logout';
 import Meetings from './pages/Meetings';
-import Seminars from './components/Seminars';
+import Seminars from './pages/Seminars';
 import AddSeminars from './components/AddSeminars';
 import ActivitiesPage from './pages/ActivitiesPage';
 

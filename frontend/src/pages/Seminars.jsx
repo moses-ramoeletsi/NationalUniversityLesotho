@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { seminarStore } from "../store/seminars.store.js";
-import Navbar from "./Navbar.jsx"
+import Navbar from "../components/Navbar.jsx"
 const Seminars = () => {
   const { fetchSeminars, seminars } = seminarStore();
   useEffect(() => {
