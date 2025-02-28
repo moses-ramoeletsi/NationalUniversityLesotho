@@ -58,7 +58,7 @@ const Activities = () => {
           </Link>
 
           <Link
-            to="/partnership"
+            to="/collaboration"
             className="block bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition"
           >
             <h3 className="text-xl font-semibold mb-2 text-green-900">
