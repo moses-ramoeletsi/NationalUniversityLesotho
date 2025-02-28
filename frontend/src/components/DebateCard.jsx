@@ -40,6 +40,7 @@ const DebatesCard = ({ debate }) => {
       <p className="text-gray-500 mt-2">
         <strong>Date:</strong> {debate.date} <br />
         <strong>Event Type:</strong> {debate.eventType} <br />
+        <strong>Participants:</strong> {debate.participants} <br />
         <strong>Location:</strong> {debate.location}
         <br />
         <strong>Status:</strong> {debate.status} <br />
