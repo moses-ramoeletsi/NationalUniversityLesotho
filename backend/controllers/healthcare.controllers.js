@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import HealthCare from "../models/healthcare.model";
+import HealthCare from "../models/healthcare.model.js";
 
 export const createHealthCare = async (req, res) => {
     const healthCare = req.body;

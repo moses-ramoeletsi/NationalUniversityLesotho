@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Trip from "../models/educational-trips.model"
+import Trip from "../models/educational-trips.model.js"
 
 export const createTrip = async (req, res) => {
     const trip = req.body;
