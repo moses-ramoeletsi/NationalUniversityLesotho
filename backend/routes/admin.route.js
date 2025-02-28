@@ -5,6 +5,7 @@ import { createSeminar, deleteSeminar, getSeminars, updateSeminar } from "../con
 import { createHealthCare, deleteHealthCare, getHealthCare, updateHealthCare } from "../controllers/healthcare.controllers.js";
 import { createTrip, deleteTrip, getTrips, updateTrip } from "../controllers/educational-trips.controllers.js";
 import { createDebate, deleteDebate, getDebate, updateDebate } from "../controllers/debate.controllers.js";
+import { createCollaboration, deleteCollaboration, getCollaboration, updateCollaboration } from "../controllers/Collaborations.controllers.js";
 
 const router = express.Router();
 
@@ -45,9 +46,9 @@ router.put("/debates/:id", updateDebate);
 router.delete("/debates/:id", deleteDebate);
 
 // //debate routes
-// router.post("/collaboration", createCollaboration);
-// router.get("/collaboration", getCollaboration);
-// router.put("/collaboration/:id", updateCollaboration);
-// router.delete("/collaboration/:id", deleteCollaboration);
+router.post("/collaboration", createCollaboration);
+router.get("/collaboration", getCollaboration);
+router.put("/collaboration/:id", updateCollaboration);
+router.delete("/collaboration/:id", deleteCollaboration);
 
 export default router;
