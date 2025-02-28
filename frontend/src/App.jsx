@@ -9,6 +9,8 @@ import Meetings from './pages/Meetings';
 import Seminars from './pages/Seminars';
 import AddSeminars from './components/AddSeminars';
 import ActivitiesPage from './pages/ActivitiesPage';
+import MentalHealthResourcePage from './pages/HealthCareResource';
+import AddHealthCare from './components/AddHealthcare';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/seminars" element={<Seminars />} />
+          <Route path="/health-care" element={<MentalHealthResourcePage />} />
 
         <Route path="/admin/*" element={<LoginForm />} />
           <Route path="/admin-panel/*" element={<AdminPanel />} />
@@ -47,6 +50,7 @@ function App() {
             }
           />
           <Route path="/add-seminar" element={<AddSeminars />} />
+          <Route path="/add-health-care" element={<AddHealthCare />} />
             </Routes>
       </BrowserRouter>
       
